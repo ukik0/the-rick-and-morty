@@ -1,0 +1,39 @@
+@import 'styles/variables';
+
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.label {
+    font-weight: 400;
+}
+
+.input {
+    background: transparent;
+    border: 1px solid $grey-secondary-bg;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: $body-secondary;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+
+    &::placeholder {
+        transition: 0.3s all ease-in-out;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    &:hover {
+        &::placeholder {
+            color: $title;
+        }
+    }
+
+    &:focus {
+        border: 1px solid $title;
+    }
+}

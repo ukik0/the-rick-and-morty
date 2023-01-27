@@ -1,0 +1,41 @@
+@import 'styles/reset.scss';
+@import 'styles/variables';
+@import 'styles/typography';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: $grey-primary-bg;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    height: 100%;
+}
+
+.container {
+    padding: 0 20px;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: $text-color;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    background: #272b33;
+    padding: 60px 0;
+}
+
+.page-container {
+    padding: 0 20px;
+    max-width: 1670px;
+    margin: 0 auto;
+}

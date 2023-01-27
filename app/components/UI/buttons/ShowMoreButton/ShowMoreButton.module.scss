@@ -1,0 +1,23 @@
+@import 'styles/variables';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+
+  .btn {
+    background: transparent;
+    border: 1px solid $green-color;
+    border-radius: 6px;
+    padding: 15px 20px;
+    color: $title;
+    font-weight: 700;
+    transition: .3s all ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+      background: $green-color;
+    }
+  }
+}

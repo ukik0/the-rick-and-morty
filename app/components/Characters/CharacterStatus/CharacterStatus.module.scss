@@ -1,0 +1,45 @@
+@import 'styles/variables';
+
+.status {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+    color: $title;
+
+    .name {
+        font-size: 1.5rem;
+        transition: 0.3s all ease-in-out;
+
+        &:hover {
+            color: $hover-color;
+        }
+    }
+
+    &__info {
+        font-size: 16px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .icon {
+            background: transparent;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+
+            &.alive {
+                background: $green-color;
+            }
+
+            &.dead {
+                background: $red-color;
+            }
+
+            &.unknown {
+                background: $unknown;
+            }
+        }
+    }
+}

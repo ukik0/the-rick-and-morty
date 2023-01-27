@@ -1,0 +1,17 @@
+@import 'styles/variables';
+
+.btn {
+    background: transparent;
+    border: 3px solid $grey-secondary-bg;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: $body-secondary;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+
+    &:hover{
+        border: 3px solid $title;
+    }
+}

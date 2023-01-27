@@ -1,0 +1,36 @@
+@import 'styles/variables';
+
+.layout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper {
+    position: relative;
+    background: $title;
+    width: 100%;
+    height: 400px;
+
+    .title {
+        color: rgba($grey-secondary-bg, 0.7);
+        text-align: center;
+        font-size: 5.625rem;
+        width: 100%;
+        @extend .layout;
+        z-index: 2;
+    }
+
+    .banner {
+        height: 100%;
+        @extend .layout;
+        z-index: 2;
+
+        svg {
+            fill: rgb(227, 224, 224);
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

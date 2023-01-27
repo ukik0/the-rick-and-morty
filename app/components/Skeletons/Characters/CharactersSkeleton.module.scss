@@ -1,0 +1,19 @@
+.list {
+    margin-top: 55px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        flex: 1 1 400px;
+        height: 220px;
+        border-radius: 0.5rem;
+        box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px,
+            rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+        overflow: hidden;
+        background: rgb(60, 62, 68);
+    }
+}

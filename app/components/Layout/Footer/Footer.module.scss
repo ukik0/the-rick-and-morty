@@ -1,0 +1,17 @@
+@import 'styles/variables';
+
+.footer {
+    background: #202329;
+    padding: 60px 0;
+
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+
+        li{
+
+        }
+    }
+}
