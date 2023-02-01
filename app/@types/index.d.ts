@@ -11,7 +11,7 @@ interface Result<Data> {
     results: Data
 }
 
-type Status = 'Alive' | 'Dead' | 'unknown'
+type Status = 'alive' | 'dead' | 'unknown'
 type Gender = 'female' | 'male' | 'genderless' | 'unknown';
 type CharacterEntity = {
     name: string

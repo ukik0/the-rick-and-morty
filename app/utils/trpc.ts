@@ -1,6 +1,6 @@
-import { httpBatchLink } from '@trpc/client';
-import { createTRPCNext } from '@trpc/next';
-import { AppRouter } from '@/server/routers';
+import {httpBatchLink} from '@trpc/client';
+import {createTRPCNext} from '@trpc/next';
+import {AppRouter} from '@/server/routers';
 
 function getBaseUrl() {
     if (typeof window !== 'undefined') return '';
@@ -24,11 +24,11 @@ export const trpc = createTRPCNext<AppRouter>({
                      **/
                     url: `${getBaseUrl()}/api/trpc`
                 })
-            ]
+            ],
             /**
              * @link https://tanstack.com/query/v4/docs/reference/QueryClient
              **/
-            // queryClientConfig: { defaultOptions: { queries: { staleTime: 60 } } },
+            queryClientConfig: { defaultOptions: { queries: { staleTime: 60, refetchOnWindowFocus: false } } },
         };
     },
     /**

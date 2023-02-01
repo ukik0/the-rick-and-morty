@@ -18,4 +18,8 @@ export const NAVIGATION: Navigation[] = [
         href: ROUTES.LOCATIONS,
         title: 'Locations'
     },
+    {
+        href: ROUTES.GAMES,
+        title: 'Game'
+    },
 ]

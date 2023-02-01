@@ -20,6 +20,7 @@
     font-size: 14px;
     font-weight: 400;
     cursor: pointer;
+    outline: none;
 
     &::placeholder {
         transition: 0.3s all ease-in-out;

@@ -6,5 +6,5 @@ export const ROUTES = {
     CHARACTER: '/character',
     EPISODES: '/episodes',
     EPISODE: '/episode',
-    GAMES: '/games',
+    GAMES: '/game',
 };

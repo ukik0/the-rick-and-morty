@@ -1,0 +1,1 @@
+export const getRandomCharacterId = (count: number) => Math.floor(Math.random() * count);

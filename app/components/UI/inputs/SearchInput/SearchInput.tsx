@@ -1,7 +1,7 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useCallback } from 'react';
-import cl from './SearchInput.module.scss';
-import { Typography } from '@/components/Typography';
+import {ChangeEvent, Dispatch, FC, SetStateAction, useCallback} from 'react';
+import {Typography} from '@/components/Typography';
 import cn from 'classnames';
+import cl from './SearchInput.module.scss';
 
 interface SearchCharactersInputProps {
     label: string;
