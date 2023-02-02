@@ -9,8 +9,9 @@ export const EpisodesPage = () => {
     const {values, functions, filters} = useEpisodesFilter()
 
     const { data: episodesResponse, isLoading } = trpc.getFilteredEpisodes.useQuery(filters);
-
+    // @ts-ignore
     const episodes = episodesResponse?.response.results as Episode[];
+    // @ts-ignore
     const pages = episodesResponse?.response.info.pages as number;
 
     return (

@@ -1,10 +1,13 @@
-import { Characters } from '@/components/Characters';
-import { ShowMoreButton } from '@/components/UI/buttons/ShowMoreButton/ShowMoreButton';
-import { FC, useState } from 'react';
+import {Characters} from '@/components/Characters';
+import {ShowMoreButton} from '@/components/UI/buttons/ShowMoreButton/ShowMoreButton';
+import {FC, useState} from 'react';
 import cl from './CharactersShowMore.module.scss';
 
+type Response = {
+    response: Character[]
+}
 interface CharactersShowMoreProps {
-    response: Result<Character[]>
+    response: Response
     characters: Character[]
 }
 

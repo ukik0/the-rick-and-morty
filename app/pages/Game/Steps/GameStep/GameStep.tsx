@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {Typography} from '@/components';
+import {useGameStep} from './useGameStep';
 import Image from 'next/image';
-import {useGameStep} from "@/app/pages/Game/Steps/GameStep/useGameStep";
 import cn from 'classnames';
 import cl from './GameStep.module.scss';
 
