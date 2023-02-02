@@ -1,8 +1,8 @@
-import { trpc } from '@/utils/trpc';
-import { SearchInput } from '@/components';
-import { PaginationBlock } from '@/app/pages/Characters/PaginationBlock/PaginationBlock';
-import { useEpisodesFilter } from '@/app/pages/Episodes/useEpisodesFilter';
-import { EpisodesList } from '@/app/pages/Episodes/EpisodesList/EpisodesList';
+import {trpc} from '@/utils/trpc';
+import {SearchInput} from '@/components';
+import {PaginationBlock} from '@/app/pages/Characters/PaginationBlock/PaginationBlock';
+import {useEpisodesFilter} from '@/app/pages/Episodes/useEpisodesFilter';
+import {EpisodesList} from '@/app/pages/Episodes/EpisodesList/EpisodesList';
 import cl from './Episodes.module.scss';
 
 export const EpisodesPage = () => {

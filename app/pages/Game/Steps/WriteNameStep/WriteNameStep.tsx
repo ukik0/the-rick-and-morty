@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import {Typography} from '@/components';
 import {useForm} from '@/app/utils';
+import {trpc} from "@/utils/trpc";
 import cl from './WriteNameStep.module.scss';
 
 interface WriteNameStepProps {
@@ -9,7 +10,13 @@ interface WriteNameStepProps {
 
 export const WriteNameStep: FC<WriteNameStepProps> = ({ next }) => {
     const form = useForm({ initialValues: { name: '' } });
-    const handleButtonClick = () => {
+
+    const checkUniqueNameMutation = trpc.isUniqueName.useMutation()
+    const handleButtonClick = async () => {
+        const isUniqueName = await checkUniqueNameMutation.mutateAsync({name: form.values.name})
+
+        if (!isUniqueName.response) return form.setFieldError('name', 'Пользователь уже есть в таблице')
+
         if (form.values.name.trim().length <= 5) {
             return form.setFieldError('name', 'Длина поля должна быть не менее 6 символов');
         }
@@ -33,9 +40,10 @@ export const WriteNameStep: FC<WriteNameStepProps> = ({ next }) => {
                 className={cl.input}
                 placeholder={'Введите имя'}
                 onChange={(e) => form.setFieldValue('name', e.target.value)}
+                maxLength={30}
             />
 
-            <button onClick={handleButtonClick} className={cl.btn}>
+            <button disabled={checkUniqueNameMutation.isLoading} onClick={handleButtonClick} className={cl.btn}>
                 start
             </button>
 

@@ -1,7 +1,7 @@
-import { procedure, router, wrapSuccess } from '@/server/utils';
-import { wrapFailure } from '@/server/utils/wrapFailure';
-import { EPISODES_INPUT } from '@/server/routers/episodes/schemas';
-import { episodesApi } from '@/utils/api/episodes';
+import {procedure, router, wrapSuccess} from '@/server/utils';
+import {wrapFailure} from '@/server/utils/wrapFailure';
+import {EPISODES_INPUT} from '@/server/routers/episodes/schemas';
+import {episodesApi} from '@/utils/api/episodes';
 
 export const episodesRouter = router({
     getEpisodes: procedure
@@ -29,7 +29,7 @@ export const episodesRouter = router({
                 page: input?.page
             });
 
-            if (!episodes) return wrapFailure(episodes);
+            if (episodes.status !== 200) return wrapFailure(episodes);
 
             return wrapSuccess(episodes.data);
         })

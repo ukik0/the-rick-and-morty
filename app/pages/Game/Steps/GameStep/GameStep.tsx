@@ -1,10 +1,9 @@
-import {FC, useState} from 'react';
+import {FC} from 'react';
 import {Typography} from '@/components';
-import {getRandomCharacterId} from '@/app/utils';
-import {trpc} from '@/utils/trpc';
 import Image from 'next/image';
-import cl from './GameStep.module.scss';
+import {useGameStep} from "@/app/pages/Game/Steps/GameStep/useGameStep";
 import cn from 'classnames';
+import cl from './GameStep.module.scss';
 
 interface GameStepProps {
     gameStatus: Game;
@@ -12,40 +11,7 @@ interface GameStepProps {
 }
 
 export const GameStep: FC<GameStepProps> = ({ gameStatus, next }) => {
-    const [answerStatus, setAnswerStatus] = useState<'right' | 'wrong' | 'null'>('null');
-    const [lives, setLives] = useState<number>(3);
-    const [score, setScore] = useState<number>(0);
-    const [characterId, setCharacterId] = useState(getRandomCharacterId(500));
-
-    const { data: characterResponse, isLoading } = trpc.getCharacter.useQuery(
-        { id: characterId },
-        { enabled: gameStatus.status === 'started' }
-    );
-
-    const character = characterResponse?.response;
-
-    const checkCharacterStatusMutation = trpc.checkCharacterStatus.useMutation();
-    const handleOptionClick = async (answer: Character['status']) => {
-        const checkCharacterStatusResponse =
-            await checkCharacterStatusMutation.mutateAsync({
-                id: characterId,
-                status: answer
-            });
-
-        const isCorrectAnswer = checkCharacterStatusResponse.success;
-        const updatedLives = lives + (isCorrectAnswer ? 0 : -1)
-        const isGameOver = !isCorrectAnswer && updatedLives === 0;
-
-        setAnswerStatus(isCorrectAnswer ? 'right' : 'wrong');
-        setLives(updatedLives);
-        setScore(score + (isCorrectAnswer ? 1 : 0));
-
-        if (isGameOver) {
-            return next();
-        }
-
-        setCharacterId(getRandomCharacterId(500));
-    };
+    const {variables, character, functions} = useGameStep({gameStatus, next})
 
     return (
         <div className={cl.wrapper}>
@@ -55,28 +21,21 @@ export const GameStep: FC<GameStepProps> = ({ gameStatus, next }) => {
 
             <div className={cl.data}>
                 <Typography tag={'h2'} variant={'sub-title-1'}>
-                    Жизней: {lives}
+                    Жизней: {variables.lives}
                 </Typography>
 
                 <Typography tag={'h2'} variant={'sub-title-1'}>
-                    Очков: {score}
+                    Очков: {variables.score}
                 </Typography>
             </div>
 
             <div
                 className={cn(cl.img__wrapper, {
-                    [cl.img__loading]: isLoading
+                    [cl.img__loading]: variables.isLoading
                 })}
             >
                 {character && (
-                    <Image
-                        src={character.image}
-                        alt={character.name}
-                        width={300}
-                        height={500}
-                        className={cl.image}
-                        priority
-                    />
+                    <Image src={character.image} alt={character.name} width={300} height={500} className={cl.image} priority/>
                 )}
             </div>
 
@@ -85,16 +44,16 @@ export const GameStep: FC<GameStepProps> = ({ gameStatus, next }) => {
             </Typography>
 
             <div
-                className={cn(cl.options, cl[answerStatus])}
-                onAnimationEnd={() => setAnswerStatus('null')}
+                className={cn(cl.options, cl[variables.answerStatus])}
+                onAnimationEnd={() => functions.setAnswerStatus('null')}
             >
-                <button onClick={() => handleOptionClick('dead')}>
+                <button disabled={variables.isLoading} onClick={() => functions.handleOptionClick('dead')}>
                     🙈 dead
                 </button>
-                <button onClick={() => handleOptionClick('alive')}>
+                <button disabled={variables.isLoading} onClick={() => functions.handleOptionClick('alive')}>
                     🙉 alive
                 </button>
-                <button onClick={() => handleOptionClick('unknown')}>
+                <button disabled={variables.isLoading} onClick={() => functions.handleOptionClick('unknown')}>
                     🙊 unknown
                 </button>
             </div>

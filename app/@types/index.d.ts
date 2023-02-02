@@ -52,3 +52,9 @@ interface Location {
     url: Url;
     created: string;
 }
+
+interface Player {
+    id: string
+    name: string
+    score: number
+}

@@ -55,6 +55,11 @@
     color: $title;
     transition: .3s all ease;
     cursor: pointer;
+    
+    &:disabled{
+        opacity: .3;
+        cursor: not-allowed;
+    }
 
     &:hover{
         border: 1px solid $hover-color;

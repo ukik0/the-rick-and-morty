@@ -1,0 +1,40 @@
+@import 'styles/variables';
+
+.wrapper {
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+    border: 1px solid rgba($green-color, 0.7);
+    padding: 25px;
+    border-radius: 8px;
+
+    .item {
+        flex: 1 0 100%;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        border: 1px solid rgba($title, 0.5);
+        border-radius: 6px;
+
+        .name {
+            color: $title;
+        }
+
+        .score {
+            color: $title;
+            opacity: 0.8;
+        }
+    }
+}
